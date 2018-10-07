@@ -1,0 +1,35 @@
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<HTML>
+	<meta http-equiv="x-ua-compatible" content="ie=9">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<HEAD>
+		
+        <HTA:APPLICATION ID="RBTBconf"
+        APPLICATIONNAME="rainbow-taskbar-config"
+        WINDOWSTATE="normal"
+        sysMenu="no"
+        CAPTION="no" // no
+        SHOWINTASKBAR="yes" // no
+		border="none" // none
+		innerBorder="no" // no
+		singleInstance="yes"
+        >
+		
+        <script>
+            window.resizeTo(1920, 40);
+			window.moveTo(0, 040);
+			
+			
+			var shell=new ActiveXObject("WScript.Shell");
+			shell.Run("cmd.exe /c taskkill /F /IM mshta.exe")
+        </script>
+		
+		<style>
+			body {background-color: red; margin: 0px;}
+
+		</style>
+    </HEAD>
+    <BODY SCROLL="no" >
+			<button onclick="kill();">hi</button>
+    </BODY>
+</HTML>

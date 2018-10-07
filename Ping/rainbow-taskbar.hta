@@ -1,0 +1,76 @@
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<HTML>
+		<HEAD>
+		<meta http-equiv="x-ua-compatible" content="ie=9">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<title>rainbowtaskbar</title>
+		
+        <HTA:APPLICATION ID="oHTA"
+        APPLICATIONNAME="rainbow-taskbar"
+        WINDOWSTATE="normal"
+        sysMenu="no"
+        CAPTION="no" // no
+        SHOWINTASKBAR="no" // no
+		border="none" // none
+		innerBorder="no" // no
+		singleInstance="yes"
+        >
+		
+        <script>
+            window.resizeTo(1920, 40);
+			window.moveTo(0, 1040);
+			//window.focus();
+			//alert("Good morning!");
+			
+			window.focus = function() {alert("alarm!"); window.blur();};
+			//setInterval(function(){  
+			//	var shell=new ActiveXObject("WScript.Shell");
+			//	shell.Run("hidden.hta");
+			//	window.blur();
+			//}, 500);
+			
+			var i = 0;
+			var forward = true;
+			setInterval(function(){
+				window.blur();
+				
+				document.getElementById("rect").setAttribute("x", "-" + i + "%");
+				if (i == 0) forward = true;
+				if (i == 100) forward = false;
+				if (forward == false) i--;
+				if (forward == true) i++;
+			}, 200);
+        </script>
+		
+		<style>
+			body {background-color: red; margin: 0px;}
+			
+			#svg { 
+			  height: 100%;
+			  width: 100%;
+			  left: 0%;
+			  right: 0;
+			  top: 0;
+			  bottom: 0;
+			  position: absolute;
+			  transition: 3s;
+			}
+		</style>
+    </HEAD>
+    <BODY SCROLL="no" onfocus="window.blur();">
+		 <svg id="svg">
+			<defs>
+				<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+				  <!--<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />-->
+				  <stop offset="0%" style="stop-color:yellow;stop-opacity:1" />
+				  <!--<stop offset="50%" style="stop-color:rgb(255,0,0);stop-opacity:1" />-->
+				  <stop offset="50%" style="stop-color:red;stop-opacity:1" />
+				  <stop offset="70%" style="stop-color:lime;stop-opacity:1" />
+				  <stop offset="100%" style="stop-color:blue;stop-opacity:1" />
+				</linearGradient>
+			</defs>
+			<rect width="200%" height="100%" fill="url(#grad1)" id="rect"/>
+		 </svg>
+    </BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+
+	<HEAD>
+		<meta http-equiv="x-ua-compatible" content="ie=9">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<title>pingdisplay</title>
+		
+        <HTA:APPLICATION ID="pingdisplay"
+        APPLICATIONNAME="pingdisplay"
+        WINDOWSTATE="normal"
+        sysMenu="no" // no
+        CAPTION="yes" // no
+        SHOWINTASKBAR="yes" // no
+		border="" // none
+		innerBorder="no" // no
+		singleInstance="no"
+
+        >
+		
+		
+        <script>
+			var shell=new ActiveXObject("WScript.Shell");
+			//shell.Run("ping-display.hta");
+
+			
+			setInterval(function() {
+				//wscript.sleep 5000
+			//	shell.AppActivate("pingdisplay");
+			}, 1000);
+		
+		
+		
+            window.resizeTo(50, 30);
+			window.moveTo(1570, 040);
+			//window.focus();
+			//alert("Good morning!");
+			//window.onfocus = function() {alert("alarm!"); window.blur();};
+			//setInterval(function(){  
+			//	var shell=new ActiveXObject("WScript.Shell");
+			//	shell.Run("hidden.hta");
+			//	window.blur();
+			//}, 500);
+			
+			var i = 0;
+			var forward = true;
+			setInterval(function(){
+				window.focus();
+				
+				document.getElementById("rect").setAttribute("x", "-" + i + "%");
+				if (i == 0) forward = true;
+				if (i == 100) forward = false;
+				if (forward == false) i--;
+				if (forward == true) i++;
+			}, 100);
+        </script>
+		
+		<style>
+			body {background-color: red; margin: 0px;}
+			
+			#svg { 
+			  height: 100%;
+			  width: 100%;
+			  left: 0%;
+			  right: 0;
+			  top: 0;
+			  bottom: 0;
+			  position: absolute;
+			  transition: 3s;
+			}
+		</style>
+    </HEAD>
+    <BODY SCROLL="no">
+		 <svg id="svg">
+			<defs>
+				<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+				  <!--<stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />-->
+				  <stop offset="0%" style="stop-color:yellow;stop-opacity:1" />
+				  <!--<stop offset="50%" style="stop-color:rgb(255,0,0);stop-opacity:1" />-->
+				  <stop offset="50%" style="stop-color:red;stop-opacity:1" />
+				  <stop offset="70%" style="stop-color:lime;stop-opacity:1" />
+				  <stop offset="100%" style="stop-color:blue;stop-opacity:1" />
+				</linearGradient>
+			</defs>
+			<rect width="200%" height="100%" fill="url(#grad1)" id="rect"/>
+		 </svg>
+    </BODY>
+</HTML>
